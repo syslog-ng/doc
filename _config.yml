@@ -46,7 +46,7 @@ exclude:
 #   - .git
 #   - .svn
 
-layouts_dir: _layout
+layouts_dir: _layouts
 
 # Sass/SCSS
 sass:
