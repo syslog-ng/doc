@@ -54,7 +54,7 @@ sass:
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 # Title
-#name: syslog-ng documentation
+title: syslog-ng documentation
 masthead_title: syslog-ng documentation
 
 # Author/Organization info to be displayed in the templates
@@ -188,3 +188,7 @@ masthead:
   hide_navigator: true
   # Option to make the masthead page top bar sticky
   sticky: true
+
+# TODO: Implement
+footer:
+  top_heading: 0
