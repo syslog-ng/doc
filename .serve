@@ -1,10 +1,81 @@
-#!/bin/sh
+#!/bin/bash
+
+REF_FILE="./.reftime"
+ALL_PARAMS=$@
+
+# Function to start to serve in the background
+start_process() {
+    echo -e "\nStarting to serve...\n"
+
+    reset_watcher
+
+    rm -Rf _site
+
+    bundle exec jekyll serve ${ALL_PARAMS} &
+    PROC_PID=$!
+
+    echo -e "\n\n\n"
+}
+
+stop_process() {
+    echo -e "\nStopping to serve...\n"
+    kill -SIGTERM ${PROC_PID}
+    wait ${PROC_PID}  # Wait for the process to terminate
+    rm -f "${REF_FILE}"
+}
+
+check_watched_file_changed() {
+    RES="$(find "$1" -newer "${REF_FILE}")"
+    if [ "${RES}x" == "x" ]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+reset_watcher() {
+    touch "${REF_FILE}"
+}
+
+# Function to handle file changes
+handle_file_changes() {
+    # Space separated list of files to watch
+    FILES_TO_WATCH=("./_config.yml")
+
+      for FILE in "${FILES_TO_WATCH[@]}"; do
+        # Check if the file was modified in the last second
+        if check_watched_file_changed "${FILE}" ; then
+            echo -e "\nFile $file changed. Restarting to serve...\n"
+
+            stop_process
+            start_process
+
+            reset_watcher
+            break  # Break out of the loop after the first file change
+        fi
+    done
+}
+
+# Main loop
+start_process
 
 while true; do
+    KEY=0
+    # Check for keyboard input without blocking
+    read -t 1 -n 1 KEY
 
-	rm -Rf _site
+    case ${KEY} in
+        s)
+            stop_process
+            exit 0
+            ;;
+        r)
+            stop_process
+            start_process
+            ;;
+    esac
 
-	bundle exec jekyll serve --host=0.0.0.0 -l %@
+    handle_file_changes
 
-	echo -e "\n\n\n"
+    sleep 1
 done

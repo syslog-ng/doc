@@ -32,6 +32,7 @@ exclude:
   - assets/js/_main.js
   - assets/js/vendor
   - .serve
+  - .reftime
   - .vendor/
   - .bundle
   - .asset-cache
