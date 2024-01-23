@@ -18,7 +18,7 @@ html {
     font-size: 20px;
   }
 
-  @include breakpoint($max-width) {
+  @include breakpoint($x-large) {
     font-size: 22px;
   }
 

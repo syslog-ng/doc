@@ -47,7 +47,7 @@
     -webkit-animation-delay: 0.15s;
     animation-delay: 0.15s;
 
-    @include breakpoint($max-width) {
+    @include breakpoint($x-large) {
       max-width: $max-width;
     }
 
@@ -71,7 +71,7 @@
       font-size: $type-size-2;
     }
 
-    @include breakpoint($max-width) {
+    @include breakpoint($x-large) {
       font-size: $type-size-1;
     }
   }
@@ -98,7 +98,7 @@
       width: 75%;
     }
 
-    @include breakpoint($max-width) {
+    @include breakpoint($x-large) {
       width: 50%;
     }
   }

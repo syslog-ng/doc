@@ -14,7 +14,7 @@
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
 
-  @include breakpoint($max-width) {
+  @include breakpoint($x-large) {
     max-width: $max-width;
   }
 }
@@ -27,7 +27,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column;
+          flex-direction: column;
 }
 
 .initial-content,
@@ -42,7 +42,7 @@ body {
     padding-right: $right-sidebar-width-narrow;
   }
 
-  @include breakpoint($max-width) {
+  @include breakpoint($x-large) {
     width: calc(100% - #{$left-sidebar-width});
     padding-right: $right-sidebar-width;
   }
@@ -67,7 +67,6 @@ body {
     }
   }
 }
-
 .page__title_decoration {
   padding-bottom: 0.5em;
   border-bottom: 1px solid $border-color;
@@ -82,20 +81,17 @@ body {
     text-decoration: none;
   }
 
-  &+.page__meta {
+  & + .page__meta {
     margin-top: -0.5em;
   }
 }
-
 .page__subtitle {
   margin-top: 0;
   line-height: 1;
-
   a {
     color: $text-color;
     text-decoration: none;
   }
-
   &+.page__meta {
     margin-top: -0.5em;
   }
@@ -118,21 +114,21 @@ body {
   h4,
   h5,
   h6 {
-    .header-link {
-      position: relative;
-      left: 0.5em;
-      opacity: 0;
-      font-size: 0.8em;
-      -webkit-transition: opacity 0.2s ease-in-out 0.1s;
-      -moz-transition: opacity 0.2s ease-in-out 0.1s;
-      -o-transition: opacity 0.2s ease-in-out 0.1s;
-      transition: opacity 0.2s ease-in-out 0.1s;
-    }
+		.header-link {
+			position: relative;
+			left: 0.5em;
+			opacity: 0;
+			font-size: 0.8em;
+			-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+			-moz-transition: opacity 0.2s ease-in-out 0.1s;
+			-o-transition: opacity 0.2s ease-in-out 0.1s;
+			transition: opacity 0.2s ease-in-out 0.1s;
+		}
 
-    &:hover .header-link {
-      opacity: 1;
-    }
-  }
+		&:hover .header-link {
+			opacity: 1;
+		}
+	}
 
   p,
   li,
@@ -145,8 +141,8 @@ body {
     margin: 0 0 $indent-var;
 
     /* sibling indentation*/
-    @if $paragraph-indent ==true {
-      &+p {
+    @if $paragraph-indent == true {
+      & + p {
         text-indent: $indent-var;
         margin-top: -($indent-var);
       }
@@ -163,7 +159,7 @@ body {
     }
   }
 
-  :not(pre)>code {
+  :not(pre) > code {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     font-size: 0.8em;
@@ -194,7 +190,7 @@ body {
   }
 
   /* blockquote citations */
-  blockquote+.small {
+  blockquote + .small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
   }
@@ -230,8 +226,8 @@ body {
       padding-left: 1em;
       padding-right: 1em;
 
-      @include breakpoint($max-width) {
-        max-width: $max-width;
+      @include breakpoint($x-large) {
+        max-width: $x-large;
       }
     }
 
@@ -394,7 +390,7 @@ body {
     border: 0;
   }
 
-  +.taxonomy__section {
+  + .taxonomy__section {
     margin-top: 2em;
   }
 }
@@ -559,7 +555,7 @@ body {
     width: calc(100% - #{$left-sidebar-width-narrow});
   }
 
-  @include breakpoint($max-width) {
+  @include breakpoint($x-large) {
     width: calc(100% - #{$left-sidebar-width});
   }
 
@@ -585,7 +581,7 @@ body {
       padding-right: 0;
     }
 
-    @include breakpoint($max-width) {
+    @include breakpoint($x-large) {
       padding-right: 0;
     }
   }
@@ -595,7 +591,7 @@ body {
       padding-right: 0;
     }
 
-    @include breakpoint($max-width) {
+    @include breakpoint($x-large) {
       padding-right: 0;
     }
   }
