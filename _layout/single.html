@@ -30,7 +30,7 @@ layout: default
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 id="page-title" class="page__title p-name" itemprop="headline">
+          {% if page.title %}<h1 id="page-title" class="page__title p-name {% if page.subtitle == null and page.description == null %} page__title_decoration{% endif %}" itemprop="headline">
             <a href="{{ page.url | absolute_url }}" class="u-url" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>{% endif %}
           {% if page.subtitle or page.description %}
@@ -39,7 +39,7 @@ layout: default
             {% else %}
               {% assign subtitle = page.description %}
             {% endif %}
-            <p id="page-subtitle" class="page__subtitle p-name" itemprop="headline">{{ subtitle }}</p>
+            <p id="page-subtitle" class="page__subtitle p-name page__title_decoration" itemprop="headline">{{ subtitle }}</p>
           {% endif %}
           {% include page__meta.html %}
         </header>

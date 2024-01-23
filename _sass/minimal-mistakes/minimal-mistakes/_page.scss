@@ -68,6 +68,11 @@ body {
   }
 }
 
+.page__title_decoration {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid $border-color;
+}
+
 .page__title {
   margin-top: 0;
   line-height: 1;
@@ -104,7 +109,7 @@ body {
 .page__content {
   h2 {
     padding-bottom: 0.5em;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px dotted $border-color;
   }
 
   h1,
