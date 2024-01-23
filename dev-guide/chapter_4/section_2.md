@@ -1,5 +1,8 @@
 ---
 title: macOS
+description: >-
+  The syslog-ng application has been resurrected <i class="fas fa-rocket"></i> on macOS by our developer team.<br/>
+  We hope our product can be useful for Mac users who want to increase the security of their system through reliable logging.
 toc: true
 ---
 
@@ -16,20 +19,18 @@ toc: true
 [ref:libdbi-update]: /dev-guide/chapter_4/macos-testing-status/modules/afsql-1#dependencies
 [gh:ose-official]: <http://www.github.com/balabit/syslog-ng>
 
-### Introduction
-
-The syslog-ng application has been resurrected on macOS by our developer team. We hope our product can be useful for Mac users who want to increase the security of their system through reliable logging.
+## Introduction
 
 At present we are not supporting macOS syslog-ng on our [official repository][gh:ose-official] on GitHub. However, you can compile syslog-ng yourself following this guide.
 
 **Note:** The guide is tested on ARM macOS Sonoma 14.2.1, Ventura 13.4, and Intel macOS Monterey 12.6.6 machines, we do our bests to keep it update, but your actual system may require additional steps or slightly different settings.
 {: .notice}
 
-### Compiling from source
+## Compiling from source
 
 Like every project syslog-ng also uses different libraries and build-systems that must be installed for compiling and running properly. These dependencies can be satisfied by compiling every-each libs and tools manually, but it might be preferred to do it the easy way. [Homebrew][ref:homebrew] is a package manager for macOS that has great community and support. You can also use it to install the dependencies you need.
 
-#### Dependencies
+### Dependencies
 
 1. [Install Homebrew][ref:homebrew-install] on your system.
 
@@ -122,7 +123,7 @@ brew install \
 > * actual state of supported features, and the required dependencies can also be found [here][ref:macos-support].
 {: .notice}
 
-#### Preparations
+### Preparations
 
 1. Depending your macOS architecture and version homebrew is using different location for storing its data, so worth using generic references to it, for this, [just follow the instructions][ref:homebrew-install-detailed] during homebrew installation.
 
@@ -188,7 +189,7 @@ brew install \
    Apple clang version 15.0.0 (clang-1500.1.0.2.5)
    ```
 
-#### Getting the source
+### Getting the source
 
 To get the latest master from syslog-ng git you can use
 
@@ -197,7 +198,7 @@ cd YOUR_PREFERRED_WORKING_DIR   # Replace `YOUR_PREFERRED_WORKING_DIR` with your
 git clone https://github.com/syslog-ng/syslog-ng . 
 ```
 
-#### Select the compiler
+### Select the compiler
 
 For gcc
 
@@ -216,9 +217,9 @@ export CC=clang
 export CXX=clang++
 ```
 
-#### Configuration
+### Configuration
 
-##### Using autotool
+#### Using autotool
 
 ```shell
 ./autogen.sh
@@ -248,7 +249,7 @@ For a full feature set you can add further \`configure\`\` flags (excluded the n
 
 For more details please see the [actual state of supported features, and the required dependencies][ref:macos-support].
 
-##### Using cmake
+#### Using cmake
 
 For the full (currently) feature set you can use
 
@@ -256,9 +257,9 @@ For the full (currently) feature set you can use
 cmake --install-prefix /full_path_of/installdir -B build . -Wno-dev -DIVYKIS_SOURCE=system -DENABLE_JAVA=OFF -DENABLE_JAVA_MODULES=OFF -DENABLE_PYTHON=ON -DENABLE_PYTHON_MODULES=ON -DBUILD_TESTING=OFF -DENABLE_AFSMTP=OFF -DENABLE_MQTT=OFF -DENABLE_PACCT=OFF -DENABLE_CPP=ON -DENABLE_GRPC=OFF --fresh 
 ```
 
-#### Compile and install
+### Compile and install
 
-##### autotools
+#### autotools
 
 ```shell
 # add AM_DEFAULT_VERBOSITY=1 before -j4 option for detailed compilation logging
@@ -272,14 +273,14 @@ make install
 **Note:** For other options and more information, read the [compile first][ref:compile-first] guide.
 {: .notice}
 
-##### cmake
+#### cmake
 
 ```shell
 # add -v as well for detailed compilation logging
 cmake --build build/. --target install -j4
 ```
 
-#### Testing
+### Testing
 
 In order to run the tests, you have to install first the [Criterion][ref:criterion] testing framework (for example: `brew install criterion`), and re-[configure](section\_2.md#configuration) the build. After that use the command below:
 
@@ -290,10 +291,10 @@ make check -j4
 **Note:** For more read [testing first][ref:test-first] guide.
 {: .notice}
 
-#### Run
+### Run
 
-```shell
-./syslog-ng -F
+```markdown
+`/full_path_of/installdir`/syslog-ng -F
 ```
 
 **Note:** For more information read the [run first][ref:run] guide and the syslog-ng [documentation][ref:docs]
