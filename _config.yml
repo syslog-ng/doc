@@ -4,11 +4,12 @@ remote_theme: mmistakes/minimal-mistakes@4.24.0
 #theme: minimal-mistakes-jekyll
 minimal_mistakes_skin: "midnight" # "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+source: source
+
 # Disable caching of content to disk in order to skip creating a .jekyll-cache or similar directory
 disable_disk_cache: true
 
 # If you’re publishing on GitHub Pages you should update only your _config.yml as GitHub Pages doesn’t load plugins via Bundler.
-#
 plugins:
   - jekyll-remote-theme
   - jekyll-sitemap        # Jekyll plugin to silently generate a sitemaps.org compliant sitemap for your Jekyll site.
@@ -25,8 +26,13 @@ whitelist:
 # Reading Files
 # In Jekyll 3, the `exclude` configuration option replaces the default exclusion list.
 # In Jekyll 4, user-provided entries get added to the default exclusion list instead and the `include` option can be used to override the default exclusion list entries.
+# Every file or directory beginning with the following characters: 
+#     ., _ , # or ~ 
+# in the source directory will not be included in the destination folder. Such paths will have to be explicitly specified via the config file in the 
+# include directive to make sure they’re copied over
 include:
   - .htaccess
+  - _docs # All documentation markdown files go here
 exclude:
   - assets/js/plugins
   - assets/js/_main.js
@@ -43,16 +49,23 @@ exclude:
   - package.json
   - package-lock.json
   - node_modules
+  - LICENSE.minimal-mistakes
 # keep_files:
 #   - .git
 #   - .svn
-
-layouts_dir: _layouts
 
 # Sass/SCSS
 sass:
   sass_dir: _sass/minimal-mistakes
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+# Note: If you assign footer_scripts the theme’s /assets/js/main.min.js file will be deactivated. 
+#       This script includes jQuery and various other plugins that you’ll need to find replacements for and include separately.
+#       https://mmistakes.github.io/minimal-mistakes/docs/javascript/
+#
+#footer_scripts:
+
+# ------------------------------------------------------------
 
 # Title
 title: syslog-ng documentation
@@ -150,7 +163,7 @@ lunr:
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 markdown: kramdown
 kramdown:
-  syntax_highlighter: rouge
+  syntax_highlighter: rouge # default
   syntax_highlighter_opts:
     default_lang: C
     block:

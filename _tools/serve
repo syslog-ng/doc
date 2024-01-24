@@ -43,7 +43,6 @@ handle_file_changes() {
     FILES_TO_WATCH=("./_config.yml")
 
       for FILE in "${FILES_TO_WATCH[@]}"; do
-        # Check if the file was modified in the last second
         if check_watched_file_changed "${FILE}" ; then
             echo -e "\nFile $file changed. Restarting to serve...\n"
 
