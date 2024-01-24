@@ -1,5 +1,11 @@
 {% if page.author_profile or layout.author_profile or page.sidebar %}
-  <div class="sidebar {% if site.sidebar.sticky == true %}sticky{% endif %}">
+  {% if page.sidebar %}
+    {% assign sidebarItemCount = page.sidebar.nav | size %}
+  {% else %}
+    {% assign sidebarItemCount = 0 %}
+  {% endif %}
+
+  <div class="sidebar {% if site.sidebar.sticky == true %}sticky{% endif %} {% if sidebarItemCount == 0 %}empty{% endif %}">
   {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
   {% if page.sidebar %}
     {% for s in page.sidebar %}
