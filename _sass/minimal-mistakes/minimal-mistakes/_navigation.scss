@@ -440,8 +440,8 @@
 }
 
 .nav__list .nav__items {
-  // Also sets the identation of the embedded menu items this way
-  margin: 0.5em;
+  /* Also could set the identation of the embedded menu items this way */
+  margin: $sidebar-nav-item-margin;
   font-size: 1.25rem;
 
   a {

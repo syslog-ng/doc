@@ -183,6 +183,7 @@ page_content_width: 90%
 
 sidebar:
   sticky: true
+  nav_item_margin: 0.5em
 
 masthead:
   # Option to hide masthead navigator in the page top bar
@@ -190,6 +191,5 @@ masthead:
   # Option to make the masthead page top bar sticky
   sticky: true
 
-# TODO: Implement
 footer:
-  top_heading: 0
+  top_margin: 0

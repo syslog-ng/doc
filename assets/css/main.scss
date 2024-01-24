@@ -11,7 +11,9 @@ search: false
 //
 $max-width: {% if site.page_content_width %} {{ site.page_content_width }} {% else %} 1280px {% endif %} !default;
 $sidebar-sticky: {% if site.sidebar.sticky == true %} 1 {% else %} 0 {% endif %} !default;
+$sidebar-nav-item-margin: {% if site.sidebar.nav_item_margin %} {{ site.sidebar.nav_item_margin }} {% else %} 0px {% endif %} !default;
 $masthead-sticky: {% if site.masthead.sticky == true %} 1 {% else %} 0 {% endif %} !default;
+$footer-top-margin: {% if site.footer.top_margin %} {{ site.footer.top_margin }} {% else %} 3em {% endif %} !default; // 3em is huge, but that was the theme default
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
